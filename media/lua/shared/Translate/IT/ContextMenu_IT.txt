@@ -1,0 +1,5 @@
+ContextMenu_IT = {
+    ContextMenu_BuildWell = "Costruire cisterna",
+    ContextMenu_BuildWellTooltipShortDesc = "Stoccaggio dell'acqua a lungo termine",
+    ContextMenu_BuildWellTooltipName = "Cisterna",
+}

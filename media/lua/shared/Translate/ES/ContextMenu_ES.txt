@@ -1,0 +1,5 @@
+ContextMenu_ES = {
+    ContextMenu_BuildWell = "Construir aljibe",
+    ContextMenu_BuildWellTooltipShortDesc = "Deposito de agua potable a largo plazo",
+    ContextMenu_BuildWellTooltipName = "Aljibe",
+}

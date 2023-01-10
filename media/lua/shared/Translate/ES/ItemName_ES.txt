@@ -1,0 +1,3 @@
+ItemName_EN = {
+    ItemName_WellsConstruction.WellsConstructionMagazine = "Antes de las Tuberias",
+}

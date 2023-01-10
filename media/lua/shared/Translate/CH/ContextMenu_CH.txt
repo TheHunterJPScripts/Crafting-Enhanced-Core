@@ -1,0 +1,5 @@
+ContextMenu_CH = {
+    ContextMenu_BuildWell = "建造蓄水池",
+    ContextMenu_BuildWellTooltipShortDesc = "長期儲水",
+    ContextMenu_BuildWellTooltipName = "蓄水池",
+}

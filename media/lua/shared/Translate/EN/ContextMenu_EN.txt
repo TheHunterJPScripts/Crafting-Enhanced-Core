@@ -1,5 +1,5 @@
 ContextMenu_EN = {
-    ContextMenu_Workbench_Menu = "Job specific workbenchs",
-    ContextMenu_Forge_Name = "Forge",
-    ContextMenu_Forge_Tooltip = "Forge",
+    ContextMenu_BuildWell = "Build well",
+    ContextMenu_BuildWellTooltipShortDesc = "Long term water storage",
+    ContextMenu_BuildWellTooltipName = "Well",
 }
