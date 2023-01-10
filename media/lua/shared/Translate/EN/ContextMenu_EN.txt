@@ -1,0 +1,5 @@
+ContextMenu_EN = {
+    ContextMenu_Workbench_Menu = "Job specific workbenchs",
+    ContextMenu_Forge_Name = "Forge",
+    ContextMenu_Forge_Tooltip = "Forge",
+}
