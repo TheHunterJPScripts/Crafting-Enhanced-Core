@@ -1,5 +1,0 @@
-ContextMenu_PTBR = {
-    ContextMenu_BuildWell = "Construir cisterna",
-    ContextMenu_BuildWellTooltipShortDesc = "Armazenamento de água a longo prazo",
-    ContextMenu_BuildWellTooltipName = "Cisterna",
-}

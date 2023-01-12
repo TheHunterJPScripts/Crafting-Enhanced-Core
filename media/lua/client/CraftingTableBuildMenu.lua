@@ -1,13 +1,19 @@
+-- TODO : Can't place the object against the north wall
+-- TODO : Can't jump over the object
+-- TODO : Comment everything propperly
+-- TODO : Allow movable object
+-- TODO : Allow crafts when close to the table
+
 CraftingTableBuildMenu = CraftingTableBuildMenu or {}
 
 CraftingTableBuildMenu.recipeRequirements = {
     PLANK_REQ = 3;
-    SCREW_REQ = 5;
+    SCREW_REQ = 10;
     SCRAP_REQ = 10;
 }
 
 
-function CraftingTableBuildMenu:doBuildMenu(player, context, worldobjects, test)
+function CraftingTableBuildMenu.doBuildMenu(player, context, worldobjects, test)
 
     -- Sanity checks
     if test and ISWorldObjectContextMenu.Test then return true end
@@ -45,27 +51,25 @@ CraftingTableBuildMenu.onForgeMenu = function(subMenu, worldobjects, player)
 
     -- Add option to the menu
     local ForgeOption = subMenu:addOption(getText("ContextMenu_Forge_Name"), worldobjects,
-        ISBuildMenu.onForgeOption, square, player);
+        CraftingTableBuildMenu.onForgeOption, square, player);
 
     -- Tooltip
     local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, ForgeOption, player);
     tooltip:setName(getText("ContextMenu_Forge_Name"));
     tooltip.description = getText("Tooltip_Forge") .. tooltip.description;
-    tooltip:setTexture("Chemical_Toilet");
+    tooltip:setTexture("crafting_tables_01_43");
     ISBuildMenu.requireHammer(ForgeOption)
 
     -- Display tooltip red if not enought materials
     local planks = ISBuildMenu.countMaterial(player, "Base.Plank");
-    if planks < CraftingTableBuildMenu.recipeRequirements.PLANK_REQ then
+    if planks < CraftingTableBuildMenu.recipeRequirements.PLANK_REQ and not ISBuildMenu.cheat then
         tooltip.description =
         tooltip.description ..
             " <RGB:1,0,0>" ..
             getItemNameFromFullType("Base.Plank") ..
             " " .. planks .. "/" .. CraftingTableBuildMenu.recipeRequirements.PLANK_REQ .. " <LINE>";
-        if not ISBuildMenu.cheat then
-            buildWellOption.onSelect = nil;
-            buildWellOption.notAvailable = true;
-        end
+        ForgeOption.onSelect = nil;
+        ForgeOption.notAvailable = true;
     else
         tooltip.description =
         tooltip.description ..
@@ -77,16 +81,14 @@ CraftingTableBuildMenu.onForgeMenu = function(subMenu, worldobjects, player)
     end
 
     local screws = ISBuildMenu.countMaterial(player, "Base.Screws");
-    if screws < CraftingTableBuildMenu.recipeRequirements.SCREW_REQ then
+    if screws < CraftingTableBuildMenu.recipeRequirements.SCREW_REQ and not ISBuildMenu.cheat then
         tooltip.description =
         tooltip.description ..
             " <RGB:1,0,0>" ..
             getItemNameFromFullType("Base.Screws") ..
             " " .. screws .. "/" .. CraftingTableBuildMenu.recipeRequirements.SCREW_REQ .. " <LINE>";
-        if not ISBuildMenu.cheat then
-            buildWellOption.onSelect = nil;
-            buildWellOption.notAvailable = true;
-        end
+        ForgeOption.onSelect = nil;
+        ForgeOption.notAvailable = true;
     else
         tooltip.description =
         tooltip.description ..
@@ -96,30 +98,32 @@ CraftingTableBuildMenu.onForgeMenu = function(subMenu, worldobjects, player)
             CraftingTableBuildMenu.recipeRequirements.SCREW_REQ ..
             "/" .. CraftingTableBuildMenu.recipeRequirements.SCREW_REQ .. " <LINE>";
     end
-    local Scrap = getSpecificPlayer(player):getInventory():getItemCount("Base.ScrapMetal", true);
-    if Scrap < CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ and not ISBuildMenu.cheat then
+
+    local scrap = ISBuildMenu.countMaterial(player, "Base.ScrapMetal");
+    if scrap < CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ and not ISBuildMenu.cheat then
         tooltip.description = tooltip.description ..
             " <RGB:1,0,0>" ..
-            getItemText("ScrapMetal") ..
-            " " .. Scrap .. "/ " .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. "\n";
+            getItemNameFromFullType("Base.ScrapMetal") ..
+            " " .. Scrap .. "/ " .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. " <LINE>";
         ForgeOption.onSelect = nil;
         ForgeOption.notAvailable = true;
     else
         tooltip.description = tooltip.description ..
             " <RGB:1,1,1>" ..
-            getItemText("ScrapMetal") ..
+            getItemNameFromFullType("Base.ScrapMetal") ..
+            " " ..
             CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ ..
-            "/" .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. "\n";
+            "/" .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. " <LINE>";
     end
 end
 
 CraftingTableBuildMenu.onForgeOption = function(worldobjects, square, player)
-    local furniture = ISForge:new("Forge", "camping_01_16", "camping_01_15");
-    furniture.modData["need:Base.Plank"] = recipeRequirements.PLANK_REQ;
-    furniture.modData["need:Base.Screws"] = recipeRequirements.SCREW_REQ;
-    furniture.modData["need:Base.ScrapMetal"] = recipeRequirements.SCRAP_REQ;
+    local furniture = ISForge:new("crafting_tables_01_43");
+    furniture.modData["need:Base.Plank"] = CraftingTableBuildMenu.recipeRequirements.PLANK_REQ;
+    furniture.modData["need:Base.Screws"] = CraftingTableBuildMenu.recipeRequirements.SCREW_REQ;
+    furniture.modData["need:Base.ScrapMetal"] = CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ;
     furniture.player = player;
-    furniture.blockAllTheSquare = true;
+    furniture.blockAllTheSquare = false;
     furniture.completionSound = "BuildWoodenStructureLarge";
     furniture.maxTime = 200;
     getCell():setDrag(furniture, player);

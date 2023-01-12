@@ -1,5 +1,0 @@
-ContextMenu_DE = {
-    ContextMenu_BuildWell = "Zisterne bauen",
-    ContextMenu_BuildWellTooltipShortDesc = "Langfristige Wasserspeicherung",
-    ContextMenu_BuildWellTooltipName = "Zisterne",
-}

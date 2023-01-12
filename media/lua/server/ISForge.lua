@@ -6,6 +6,7 @@ function ISForge:create(x, y, z, north, sprite)
 	self.javaObject = IsoThumpable.new(cell, self.sq, sprite, north, self);
 	buildUtil.setInfo(self.javaObject, self);
 	buildUtil.consumeMaterial(self);
+	self.javaObject:setName("Forge")
 	self.javaObject:setMaxHealth(self:getHealth());
 	self.javaObject:setHealth(self.javaObject:getMaxHealth());
 	self.javaObject:setBreakSound("BreakObject");
@@ -17,28 +18,34 @@ end
 function ISForge:removeFromGround(square)
 	for i = 0, square:getSpecialObjects():size() do
 		local thump = square:getSpecialObjects():get(i);
-		if instanceof(thump, "IsoThumpable") then
+		print("SPECIAL OBJECT: " + thump.name)
+		if instanceof(thump, "Forge") then
 			square:transmitRemoveItemFromSquare(thump);
+			square:getObjects():remove(thump);
+			square:getSpecialObjects():remove(thump);
 		end
 	end
 end
 
-function ISForge:new(name, sprite, northSprite)
+function ISForge:new(sprite)
 	local o = {};
 	setmetatable(o, self);
 	self.__index = self;
 	o:init();
 	o:setSprite(sprite);
-	o:setNorthSprite(northSprite);
-	o.name = name;
-	o.dismantable = false;
+	-- o:setNorthSprite(northSprite1);
+	-- o:setEastSprite(sprite2)
+	-- o:setSouthSprite(northSprite2)
+	o.name = "Forge";
+	o.containerType = "crate";
+	o.dismantable = true;
 	o.blockAllTheSquare = true;
 	o.buildLow = true;
-	o.canPassThrough = true;
+	o.canPassThrough = false;
 	o.canBarricade = false;
-	o.ignoreNorth = false;
-	o.canBeAlwaysPlaced = false;
-	o.isThumpable = false;
+	o.ignoreNorth = true;
+	o.canBeAlwaysPlaced = true;
+	o.isThumpable = true;
 	return o;
 end
 
