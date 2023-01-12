@@ -32,20 +32,25 @@ function ISForge:new(sprite)
 	setmetatable(o, self);
 	self.__index = self;
 	o:init();
-	o:setSprite(sprite);
+	o:setSouthSprite(sprite);
 	-- o:setNorthSprite(northSprite1);
 	-- o:setEastSprite(sprite2)
-	-- o:setSouthSprite(northSprite2)
-	o.name = "Forge";
-	o.containerType = "crate";
-	o.dismantable = true;
+	-- o:setSprite(northSprite2)
+	o.completionSound = "BuildWoodenStructureLarge";
+	o.maxTime = 200;
+
+	-- recipe
+	-- o.modData["need:Base.Plank"] = CraftingTableBuildMenu.recipeRequirements.PLANK_REQ;
+	-- o.modData["need:Base.Screws"] = CraftingTableBuildMenu.recipeRequirements.SCREW_REQ;
+	-- o.modData["need:Base.ScrapMetal"] = CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ;
+
+	-- properties
 	o.blockAllTheSquare = true;
-	o.buildLow = true;
-	o.canPassThrough = false;
-	o.canBarricade = false;
-	o.ignoreNorth = true;
-	o.canBeAlwaysPlaced = true;
-	o.isThumpable = true;
+	o.name = "Forge";
+	-- o.dismantable = false;
+	-- o.canBeAlwaysPlaced = true;
+	-- o.isContainer = true;
+	-- o.containerType = "crate";
 	return o;
 end
 
