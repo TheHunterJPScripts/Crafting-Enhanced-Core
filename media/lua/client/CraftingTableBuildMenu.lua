@@ -57,7 +57,7 @@ CraftingTableBuildMenu.onForgeMenu = function(subMenu, worldobjects, player)
     local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, ForgeOption, player);
     tooltip:setName(getText("ContextMenu_Forge_Name"));
     tooltip.description = getText("Tooltip_Forge") .. tooltip.description;
-    tooltip:setTexture("crafting_tables_01_43");
+    tooltip:setTexture("crafting_table_01_43");
     ISBuildMenu.requireHammer(ForgeOption)
 
     -- Display tooltip red if not enought materials
@@ -99,21 +99,20 @@ CraftingTableBuildMenu.onForgeMenu = function(subMenu, worldobjects, player)
             "/" .. CraftingTableBuildMenu.recipeRequirements.SCREW_REQ .. " <LINE>";
     end
 
-    local scrap = ISBuildMenu.countMaterial(player, "Base.ScrapMetal");
+    local scrap = getSpecificPlayer(player):getInventory():getItemCount("Base.ScrapMetal", true);
     if scrap < CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ and not ISBuildMenu.cheat then
         tooltip.description = tooltip.description ..
             " <RGB:1,0,0>" ..
-            getItemNameFromFullType("Base.ScrapMetal") ..
-            " " .. Scrap .. "/ " .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. " <LINE>";
+            getItemText("Base.ScrapMetal") ..
+            " " .. Scrap .. "/ " .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. "\n";
         ForgeOption.onSelect = nil;
         ForgeOption.notAvailable = true;
     else
         tooltip.description = tooltip.description ..
             " <RGB:1,1,1>" ..
-            getItemNameFromFullType("Base.ScrapMetal") ..
-            " " ..
+            getItemText("Base.ScrapMetal") ..
             CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ ..
-            "/" .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. " <LINE>";
+            "/" .. CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ .. "\n";
     end
 end
 
