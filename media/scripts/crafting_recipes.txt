@@ -1,0 +1,23 @@
+module Crafing_Recipes
+{
+	imports
+	{
+		Base
+	}
+
+
+recipe Make Convert Nails
+{
+    Screws=1,
+    keep Hammer,
+
+    Result:Nails,
+    Time:100.0,
+    Category:Chemistry,
+    Sound:Anvil,
+    NearItem:Laboratory Table,
+    AnimNode:BuildHigh,
+      Prop1:Hammer,
+      Prop2:Source=1,
+}
+}

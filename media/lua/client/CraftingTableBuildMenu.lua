@@ -1,17 +1,62 @@
--- TODO : Can't place the object against the north wall
--- TODO : Can't jump over the object
 -- TODO : Comment everything propperly
--- TODO : Allow movable object
 -- TODO : Allow crafts when close to the table
+-- TODO : Test multiblock placement
 
 CraftingTableBuildMenu = CraftingTableBuildMenu or {}
 
-CraftingTableBuildMenu.recipeRequirements = {
-    PLANK_REQ = 3;
-    SCREW_REQ = 10;
-    SCRAP_REQ = 10;
-}
+local function requireTool(player, option, tool)
+    CraftingTableBuildMenu.hasScrewdriver = player:containsTagEvalRecurse(tool, predicateNotBroken)
 
+    if not CraftingTableBuildMenu.hasScrewdriver and not ISBuildMenu.cheat then
+        option.notAvailable = true
+        option.onSelect = nil
+    end
+
+end
+
+local function requireMaterials(player, option, obj)
+    local tooltip = option.toolTip
+
+    for i, requiredMaterial in ipairs(obj.recipe) do
+        local currentMaterialCount = ISBuildMenu.countMaterial(player, requiredMaterial.Material);
+
+        if currentMaterialCount < requiredMaterial.Amount and not ISBuildMenu.cheat then
+            tooltip.description =
+            tooltip.description ..
+                " <RGB:1,0,0>" ..
+                getItemNameFromFullType(requiredMaterial.Material) ..
+                " " .. currentMaterialCount .. "/" .. requiredMaterial.Amount .. " <LINE>";
+
+            option.onSelect = nil;
+            option.notAvailable = true;
+        else
+            tooltip.description =
+            tooltip.description ..
+                " <RGB:1,1,1>" ..
+                getItemNameFromFullType(requiredMaterial.Material) ..
+                " " ..
+                requiredMaterial.Amount ..
+                "/" .. requiredMaterial.Amount .. " <LINE>";
+        end
+    end
+
+    return true
+end
+
+function buildMenu(option, worldobjects, player, obj)
+    local name = getText(obj.NameID)
+    local menuOption = option:addOption(name, worldobjects, obj.onBuild, player)
+
+    -- Tooltip
+    local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, menuOption, player);
+    local tooltipDescription = obj.tooltip.desctiption
+    tooltip:setName(name);
+    tooltip.description = tooltipDescription .. tooltip.description;
+    tooltip:setTexture(obj.sprites.west[0], obj.sprites.west[1]);
+    requireTool(player, menuOption, obj.requiredTool)
+    requireMaterials(player, obj)
+
+end
 
 function CraftingTableBuildMenu.doBuildMenu(player, context, worldobjects, test)
 
@@ -42,7 +87,7 @@ function CraftingTableBuildMenu.doBuildMenu(player, context, worldobjects, test)
         end
     end
     if subMenu then
-        CraftingTableBuildMenu.onForgeMenu(subMenu, worldobjects, player)
+        LaboratoryTableMenu.onBuild(subMenu, worldobjects, player)
     end
 
 end
@@ -118,15 +163,15 @@ CraftingTableBuildMenu.onForgeMenu = function(subMenu, worldobjects, player)
 end
 
 CraftingTableBuildMenu.onForgeOption = function(worldobjects, square, player)
-    local furniture = ISForge:new("crafting_tables_01_43");
-    furniture.modData["need:Base.Plank"] = CraftingTableBuildMenu.recipeRequirements.PLANK_REQ;
-    furniture.modData["need:Base.Screws"] = CraftingTableBuildMenu.recipeRequirements.SCREW_REQ;
-    furniture.modData["need:Base.ScrapMetal"] = CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ;
-    furniture.player = player;
-    furniture.blockAllTheSquare = false;
-    furniture.completionSound = "BuildWoodenStructureLarge";
-    furniture.maxTime = 200;
-    getCell():setDrag(furniture, player);
+    local forge = ISForge:new("crafting_tables_01_43");
+    forge.modData["need:Base.Plank"] = CraftingTableBuildMenu.recipeRequirements.PLANK_REQ;
+    forge.modData["need:Base.Screws"] = CraftingTableBuildMenu.recipeRequirements.SCREW_REQ;
+    forge.modData["need:Base.ScrapMetal"] = CraftingTableBuildMenu.recipeRequirements.SCRAP_REQ;
+    forge.player = player;
+    forge.blockAllTheSquare = false;
+    forge.isContainer = true;
+    forge.containerType = "crate";
+    forge.completionSound = "BuildWoodenStructureLarge";
+    forge.maxTime = 200;
+    getCell():setDrag(forge, player);
 end
-
-Events.OnFillWorldObjectContextMenu.Add(CraftingTableBuildMenu.doBuildMenu);
