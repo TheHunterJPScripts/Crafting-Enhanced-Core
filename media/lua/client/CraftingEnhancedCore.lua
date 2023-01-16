@@ -50,10 +50,10 @@ CraftingEnhancedCore.buildMenu = function(option, worldobjects, player, obj)
     local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, menuOption, player);
     local tooltipDescription = obj.tooltip.description
     tooltip:setName(name);
+    tooltip:setTexture(obj.sprites.west[1]);
     tooltip.description = tooltipDescription .. tooltip.description;
-    tooltip:setTexture(obj.sprites.west[0], obj.sprites.west[1]);
-    CraftingEnhancedCore.requireTool(player, menuOption, obj.requiredTool)
-    CraftingEnhancedCore.requireMaterials(player, menuOption, obj)
+    -- CraftingEnhancedCore.requireTool(player, menuOption, obj.requiredTool)
+    -- CraftingEnhancedCore.requireMaterials(player, menuOption, obj)
 
 end
 
