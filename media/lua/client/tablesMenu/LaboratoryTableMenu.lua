@@ -4,14 +4,31 @@ LaboratoryTableMenu.recipe = {
   {
     Material = "Base.Plank",
     Amount = 3
+  },
+  {
+    Material = "Base.ScrapMetal",
+    Amount = 3
   }
 }
 
 LaboratoryTableMenu.NameID = "ContextMenu_Laboratory_Table"
-LaboratoryTableMenu.requiredTool = "Hammer"
+LaboratoryTableMenu.requiredTool = "Screwdriver"
 LaboratoryTableMenu.sprites = {
+  south = {
+    "crafting_tables_0",
+    "crafting_tables_1"
+  },
   west = {
-
+    "crafting_tables_0",
+    "crafting_tables_1"
+  },
+  north = {
+    "crafting_tables_0",
+    "crafting_tables_1"
+  },
+  east = {
+    "crafting_tables_0",
+    "crafting_tables_1"
   }
 }
 LaboratoryTableMenu.tooltip = {
@@ -19,7 +36,7 @@ LaboratoryTableMenu.tooltip = {
 }
 
 LaboratoryTableMenu.onBuildMenu = function(option, worldobjects, player)
-  buildMenu(option, worldobjects, player, LaboratoryTableMenu)
+  getModInstance().buildMenu(option, worldobjects, player, LaboratoryTableMenu)
 end
 
 LaboratoryTableMenu.onBuild = function(player)
