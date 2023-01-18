@@ -15,20 +15,20 @@ LaboratoryTableMenu.NameID = "ContextMenu_Laboratory_Table"
 LaboratoryTableMenu.requiredTool = "Screwdriver"
 LaboratoryTableMenu.sprites = {
   south = {
-    "crafting_tables_0",
-    "crafting_tables_1"
+    "core_workbenches_0",
+    "core_workbenches_1"
   },
   west = {
-    "crafting_tables_0",
-    "crafting_tables_1"
+    "core_workbenches_0",
+    "core_workbenches_1"
   },
   north = {
-    "crafting_tables_0",
-    "crafting_tables_1"
+    "core_workbenches_0",
+    "core_workbenches_1"
   },
   east = {
-    "crafting_tables_0",
-    "crafting_tables_1"
+    "core_workbenches_0",
+    "core_workbenches_1"
   }
 }
 LaboratoryTableMenu.tooltip = {
@@ -40,11 +40,11 @@ LaboratoryTableMenu.onBuildMenu = function(option, worldobjects, player)
 end
 
 LaboratoryTableMenu.onBuild = function(player)
-  local laboratoryTable = ISLaboratoryTable:new();
+  local laboratoryTable = ISCraftingTableTile:new("Pepe", Direction.North);
 
-  for _, recipe in ipairs(LaboratoryTableMenu.recipe) do
-    laboratoryTable.modData["need:" .. recipe.Material] = recipe.Amount
-  end
+  -- for _, recipe in ipairs(LaboratoryTableMenu.recipe) do
+  --   laboratoryTable.modData["need:" .. recipe.Material] = recipe.Amount
+  -- end
 
   laboratoryTable.player = player;
   laboratoryTable.blockAllTheSquare = false;

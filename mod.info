@@ -1,6 +1,5 @@
-name=Crafting Enhanced
-id=craftingEnhanced
+name=Crafting Enhanced Core
+id=craftingEnhancedCore
 description=Add new crafting tables to each type of craft
 poster=poster.png
-pack=crafting_enhanced
-tiledef=crafting_enhanced 3878
+pack=crafting_enhanced_core

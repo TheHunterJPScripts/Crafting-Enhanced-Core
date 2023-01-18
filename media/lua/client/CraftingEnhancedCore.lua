@@ -27,8 +27,8 @@ CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, wo
     -- General menu
     local subMenu = nil;
     local buildOption = nil;
-    -- Check the current open menus and search for the building menu.
 
+    -- Check the current open menus and search for the building menu.
     for _, value in ipairs(context.options) do
         if value.name == getText("ContextMenu_Build") then
             print(value.name)
@@ -43,14 +43,16 @@ CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, wo
 end
 
 CraftingEnhancedCore.buildMenu = function(option, worldobjects, player, obj)
+    print("ADDDDDDDDD")
     local name = getText(obj.NameID)
     local menuOption = option:addOption(name, worldobjects, obj.onBuild, player)
 
     -- Tooltip
     local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, menuOption, player);
-    local tooltipDescription = obj.tooltip.description
     tooltip:setName(name);
+    print(obj.sprites.west[1])
     tooltip:setTexture(obj.sprites.west[1]);
+    local tooltipDescription = obj.tooltip.description
     tooltip.description = tooltipDescription .. tooltip.description;
     -- CraftingEnhancedCore.requireTool(player, menuOption, obj.requiredTool)
     -- CraftingEnhancedCore.requireMaterials(player, menuOption, obj)
