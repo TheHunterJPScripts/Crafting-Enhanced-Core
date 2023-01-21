@@ -4,19 +4,8 @@ CraftingEnhancedCore.NAME = 'Crafting Enhanced Core'
 CraftingEnhancedCore.AUTHOR = 'TheHunterJP'
 CraftingEnhancedCore.VERSION = '0.1'
 
-print('Mod Loaded: ' .. MoreBuild.NAME .. ' by ' .. MoreBuild.AUTHOR .. ' (v' .. MoreBuild.VERSION .. ')')
-
-CraftingEnhancedCore.tables = {}
-
-
-MoreBuild.textTooltipHeader = ' <RGB:2,2,2> <LINE> <LINE>' .. getText('Tooltip_craft_Needs') .. ' : <LINE> '
-MoreBuild.textCanRotate = '<LINE> <RGB:1,1,1>' ..
-    getText('Tooltip_craft_pressToRotate', Keyboard.getKeyName(getCore():getKey('Rotate building')))
-MoreBuild.textPlasterRed = '<RGB:1,0,0> <LINE> <LINE>' .. getText('Tooltip_PlasterRed_Description')
-MoreBuild.textPlasterGreen = '<RGB:1,1,1> <LINE> <LINE>' .. getText('Tooltip_PlasterGreen_Description')
-MoreBuild.textPlasterNever = '<RGB:1,0,0> <LINE> <LINE>' .. getText('Tooltip_PlasterNever_Description')
-
-
+print('Mod Loaded: ' ..
+  CraftingEnhancedCore.NAME .. ' by ' .. CraftingEnhancedCore.AUTHOR .. ' (v' .. CraftingEnhancedCore.VERSION .. ')')
 
 CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, worldobjects, test)
   if getCore():getGameMode() == 'LastStand' then
@@ -32,18 +21,26 @@ CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, wo
     return
   end
 
-  if CraftingEnhancedCore.checkPermission(playerObj) then return end
-
   local inv = playerObj:getInventory()
 
-  -- TODO Get carptentry menu
+  local carpentryMenu = nil;
 
-  for _, value in ipairs(CraftingEnhancedCore.tables) do
-    if not CraftingEnhancedCore.hasRequiredTool(inv, value.requireTool) then goto continue end
+  for _, value in ipairs(context.options) do
+    if value.name == getText("ContextMenu_Build") then
+      local buildOption = value;
+      -- Retrieve the sub menu in case it is found.
+      carpentryMenu = context:getSubMenu(buildOption.subOption);
+    end
+  end
 
-    CraftingEnhancedCore.TableMenuBuilder(subMenu, player, context, value)
+  local newCarpentryOption = carpentryMenu:addOption(getText('ContextMenu_Tables'))
+  local subMenu = ISContextMenu:getNew(carpentryMenu)
+  carpentryMenu:addSubMenu(newCarpentryOption, subMenu)
 
-    ::continue::
+  if subMenu then
+    for _, value in pairs(CraftingEnhancedCore.tables) do
+      CraftingEnhancedCore.TableMenuBuilder(subMenu, player, value)
+    end
   end
 end
 
@@ -54,6 +51,11 @@ end
 CraftingEnhancedCore.canBuildObject = function(_tooltip, player, table)
 
   local inv = getSpecificPlayer(player):getInventory()
+
+  if not CraftingEnhancedCore.getAvailableTools(inv, table.requireTool) then
+    _tooltip.description = _tooltip.description .. ' <RGB:1,0,0>' ..
+        'Require tool' .. table.requireTool .. ' <LINE>'
+  end
 
   for _, material in pairs(table.recipe) do
     local invItemCount = inv:getItemCountFromTypeRecurse(material.type)
@@ -69,7 +71,8 @@ CraftingEnhancedCore.canBuildObject = function(_tooltip, player, table)
     end
   end
 end
-CraftingEnhancedCore.TableMenuBuilder = function(subMenu, player, context, table)
+
+CraftingEnhancedCore.TableMenuBuilder = function(subMenu, player, table)
 
   local _option
 
@@ -84,27 +87,25 @@ CraftingEnhancedCore.TableMenuBuilder = function(subMenu, player, context, table
   CraftingEnhancedCore.AddTooltip(_option, player, table)
 end
 
-CraftingEnhancedCore.AddTooltip = function(context, player, table)
-  local _tooltip = ISToolTip:new()
-  _tooltip:initialise()
-  _tooltip:setVisible(false)
-  context.toolTip = _tooltip
+CraftingEnhancedCore.AddTooltip = function(option, player, table)
+  local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, option, player);
 
-  _tooltip.setName(table.tooltipTitle)
-  _tooltip.description = table.tooltipDescription .. _tooltip.description
-  _tooltip.setTexture(table.tooltipTexture)
+  tooltip:setName(table.tooltipTitle);
+  tooltip.description = tooltip.description .. table.tooltipDescription;
+  tooltip:setTexture(table.tooltipTexture);
 
-  CraftingEnhancedCore.canBuildObject(_tooltip, player, table)
+  CraftingEnhancedCore.canBuildObject(tooltip, player, table)
 end
 
 CraftingEnhancedCore.onBuildDoubleTiled = function(ignoreThisArgument, table, player)
-  local _table = ISDoubleTileFurniture:new(table.nameID, table.sprites)
+  local _table = ISDoubleTileFurniture:new(table.nameID, table.sprites.west[1], table.sprites.west[2],
+    table.sprites.south[1], table.sprites.south[2])
 
   _table.player = player
   _table.name = table.nameID
 
-  for _, material in ipairs(_table.recipe) do
-    _table.modData['need:' + material.type] = material.amount
+  for _, material in pairs(table.recipe) do
+    _table.modData['need:' .. material.type] = material.amount
   end
 
   getCell():setDrag(_table, player)
