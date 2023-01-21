@@ -1,5 +1,0 @@
-ContextMenu_RU = {
-    ContextMenu_BuildWell = "построить цистерну",
-    ContextMenu_BuildWellTooltipShortDesc = "длительное хранение воды",
-    ContextMenu_BuildWellTooltipName = "сливной бачок",
-}

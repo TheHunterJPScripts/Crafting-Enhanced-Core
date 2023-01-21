@@ -1,4 +1,6 @@
-name=Crafting Enhanced
-id=craftingEnhanced
-description=Add new crafting tables to each type of craft
+name=Crafting enhanced core
 poster=poster.png
+id=craftingEnhancedCore
+description=Project Zomboid more builds Mod. <BR> author: ProjectSky <BR> Date: September 10, 2015 <BR> Contact: sky.orc.mm@gmail.com
+tiledef=morebuild 275
+pack=morebuild
