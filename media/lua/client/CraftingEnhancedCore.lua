@@ -42,18 +42,20 @@ CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, wo
     end
 end
 
-CraftingEnhancedCore.buildMenu = function(option, worldobjects, player, obj)
-    print("ADDDDDDDDD")
-    local name = getText(obj.NameID)
-    local menuOption = option:addOption(name, worldobjects, obj.onBuild, player)
+CraftingEnhancedCore.buildMenu = function(option, worldobjects, player)
+    local name = "Pepe"
+    _sprite = {}
+    _sprite.sprite = "furniture_tables_high_01_1"
+    _sprite.sprite2 = "furniture_tables_high_01_0"
+    _sprite.northSprite = "furniture_tables_high_01_9"
+    _sprite.northSprite2 = "furniture_tables_high_01_8"
+
+    local menuOption = option:addOption(name, worldobjects, LaboratoryTableMenu.onBuild, _sprite, player, name)
 
     -- Tooltip
     local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, menuOption, player);
     tooltip:setName(name);
-    print(obj.sprites.west[1])
-    tooltip:setTexture(obj.sprites.west[1]);
-    local tooltipDescription = obj.tooltip.description
-    tooltip.description = tooltipDescription .. tooltip.description;
+    tooltip:setTexture("furniture_tables_high_01_24");
     -- CraftingEnhancedCore.requireTool(player, menuOption, obj.requiredTool)
     -- CraftingEnhancedCore.requireMaterials(player, menuOption, obj)
 

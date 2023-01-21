@@ -3,3 +3,5 @@ id=craftingEnhancedCore
 description=Add new crafting tables to each type of craft
 poster=poster.png
 pack=crafting_enhanced_core
+pack=morebuild
+tiledef=morebuild 275
