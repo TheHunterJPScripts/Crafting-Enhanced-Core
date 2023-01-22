@@ -44,6 +44,10 @@ CraftingEnhancedCore.tables = {
     },
     completionSound = "BuildWoodenStructureLarge",
     maxTime = 200,
+    container = {
+      type = "crate",
+      capacity = 5,
+    }
   },
   {
     nameID = "Tailoring Table",
@@ -81,6 +85,12 @@ CraftingEnhancedCore.tables = {
         type = "Base.ScrapMetal",
         amount = 10,
       }
+    },
+    completionSound = "BuildWoodenStructureLarge",
+    maxTime = 200,
+    container = {
+      type = "crate",
+      capacity = 5,
     }
   },
   {
@@ -122,6 +132,10 @@ CraftingEnhancedCore.tables = {
     },
     completionSound = "BuildWoodenStructureLarge",
     maxTime = 200,
+    container = {
+      type = "crate",
+      capacity = 5,
+    }
   },
   {
     nameID = "Forge Table",
@@ -162,6 +176,10 @@ CraftingEnhancedCore.tables = {
     },
     completionSound = "BuildWoodenStructureLarge",
     maxTime = 200,
+    container = {
+      type = "crate",
+      capacity = 5,
+    }
   },
   {
     nameID = "Armory table",
@@ -202,5 +220,9 @@ CraftingEnhancedCore.tables = {
     },
     completionSound = "BuildWoodenStructureLarge",
     maxTime = 200,
+    container = {
+      type = "crate",
+      capacity = 5,
+    }
   },
 }
