@@ -1,6 +1,8 @@
-ISDoubleTileTable = ISBuildingObject:derive("ISDoubleTileTable");
+ISDoubleTileTable = ISDoubleTileFurniture:derive("ISDoubleTileTable");
 
 -- TODO: Prevent building if it clip thought walls and stuff
+-- TODO: Secondary sprite not considered present when building over it (Game limitation looks like or maybe debug mode wierd stuff)
+-- TODO: Check if out of debug mode the user moves to build the table.
 
 function ISDoubleTileTable:create(x, y, z, north, sprite)
 
@@ -36,58 +38,6 @@ function ISDoubleTileTable:create(x, y, z, north, sprite)
 	buildUtil.consumeMaterial(self);
 end
 
-function ISDoubleTileTable:walkTo(x, y, z)
-	local playerObj = getSpecificPlayer(self.player)
-	local square = getCell():getGridSquare(x, y, z)
-	local square2 = self:getSquare2(square, self.north)
-	if square:DistToProper(playerObj) < square2:DistToProper(playerObj) then
-		return luautils.walkAdj(playerObj, square)
-	end
-	return luautils.walkAdj(playerObj, square2)
-end
-
-function ISDoubleTileTable:setInfo(square, north, sprite)
-	-- add furniture to our ground
-	local thumpable = IsoThumpable.new(getCell(), square, sprite, north, self);
-	-- name of the item for the tooltip
-	buildUtil.setInfo(thumpable, self);
-	-- the furniture have 200 base health + 100 per carpentry lvl
-	thumpable:setMaxHealth(self:getHealth());
-	thumpable:setHealth(thumpable:getMaxHealth())
-	-- the sound that will be played when our furniture will be broken
-	thumpable:setBreakSound("BreakObject");
-	square:AddSpecialObject(thumpable);
-	thumpable:transmitCompleteItemToServer();
-end
-
-function ISDoubleTileTable:removeFromGround(square)
-	for i = 0, square:getSpecialObjects():size() do
-		local thump = square:getSpecialObjects():get(i);
-		if instanceof(thump, "IsoThumpable") then
-			square:transmitRemoveItemFromSquare(thump);
-			break
-		end
-	end
-
-	local xa = square:getX();
-	local ya = square:getY();
-
-	if self:getNorth() then
-		ya = ya - 1;
-	else
-		xa = xa - 1;
-	end
-
-	square = getCell():getGridSquare(xa, ya, square:getZ());
-	for i = 0, square:getSpecialObjects():size() do
-		local thump = square:getSpecialObjects():get(i);
-		if instanceof(thump, "IsoThumpable") then
-			square:transmitRemoveItemFromSquare(thump);
-			break
-		end
-	end
-end
-
 function ISDoubleTileTable:new(name, sprite1, sprite2, northSprite1, northSprite2, eastSprite1, eastSprite2, southSprite1
                                ,
                                southSprite2)
@@ -112,11 +62,6 @@ function ISDoubleTileTable:new(name, sprite1, sprite2, northSprite1, northSprite
 	o.canBeAlwaysPlaced = true;
 	o.buildLow = true;
 	return o;
-end
-
--- return the health of the new furniture, it's 200 + 100 per carpentry lvl
-function ISDoubleTileTable:getHealth()
-	return 200 + buildUtil.getWoodHealth(self);
 end
 
 function ISDoubleTileTable:render(x, y, z, square)
@@ -162,36 +107,4 @@ function ISDoubleTileTable:render(x, y, z, square)
 	else
 		secondarySpriteObject:RenderGhostTileRed(secondaryX, secondaryY, z);
 	end
-end
-
-function ISDoubleTileTable:isValid(square)
-	if not ISBuildingObject.isValid(self, square) then
-		return false
-	end
-	if buildUtil.stairIsBlockingPlacement(square, true) then return false; end
-	if square:isVehicleIntersecting() then return false end
-	local xa, ya, za = self:getSquare2Pos(square, self.north)
-	local squareA = getCell():getGridSquare(xa, ya, za)
-	if not squareA or not squareA:isFreeOrMidair(true) or buildUtil.stairIsBlockingPlacement(squareA, true) then
-		return false
-	end
-	if squareA:isVehicleIntersecting() then return false end
-	return true
-end
-
-function ISDoubleTileTable:getSquare2Pos(square, north)
-	local x = square:getX()
-	local y = square:getY()
-	local z = square:getZ()
-	if north then
-		y = y - 1
-	else
-		x = x - 1
-	end
-	return x, y, z
-end
-
-function ISDoubleTileTable:getSquare2(square, north)
-	local x, y, z = self:getSquare2Pos(square, north)
-	return getCell():getGridSquare(x, y, z)
 end

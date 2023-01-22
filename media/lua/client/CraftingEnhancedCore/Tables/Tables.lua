@@ -6,25 +6,25 @@ CraftingEnhancedCore = getModInstance()
 
 CraftingEnhancedCore.tables = {
   {
-    nameID = "Laboratory table",
+    nameID = "Laboratory Table",
     displayName = getText("ContextMenu_LaboratoryTable"),
     tooltipTitle = getText("UI_LaboratoryTable_Title"),
     tooltipDescription = getText("UI_LaboratoryTable_Description"),
-    tooltipTexture = "furniture_seating_indoor_03_32",
+    tooltipTexture = "core_workbenches_1",
     icon = "",
     size = 2,
     sprites = {
       north = {
-        "furniture_seating_indoor_03_34", "furniture_seating_indoor_03_35"
+        "core_workbenches_2", "core_workbenches_3"
       },
       south = {
-        "furniture_seating_indoor_03_38", "furniture_seating_indoor_03_39"
+        "core_workbenches_6", "core_workbenches_7"
       },
       west = {
-        "furniture_seating_indoor_03_32", "furniture_seating_indoor_03_33"
+        "core_workbenches_1", "core_workbenches_0"
       },
       east = {
-        "furniture_seating_indoor_03_37", "furniture_seating_indoor_03_36"
+        "core_workbenches_5", "core_workbenches_4"
       }
     },
     requireTool = "Screwdriver",
@@ -46,25 +46,25 @@ CraftingEnhancedCore.tables = {
     maxTime = 200,
   },
   {
-    nameID = "Laboratory table 2",
+    nameID = "Tailoring Table",
     displayName = getText("ContextMenu_LaboratoryTable"),
     tooltipTitle = getText("UI_LaboratoryTable_Title"),
     tooltipDescription = getText("UI_LaboratoryTable_Description"),
-    tooltipTexture = "furniture_seating_indoor_02_6",
+    tooltipTexture = "core_workbenches_8",
     icon = "",
     size = 1,
     sprites = {
       north = {
-        "furniture_seating_indoor_02_4"
+        "core_workbenches_9"
       },
       south = {
-        "furniture_seating_indoor_02_5"
+        "core_workbenches_11"
       },
       west = {
-        "furniture_seating_indoor_02_6"
+        "core_workbenches_8"
       },
       east = {
-        "furniture_seating_indoor_02_7"
+        "core_workbenches_10"
       }
     },
     requireTool = "Screwdriver",
@@ -82,5 +82,125 @@ CraftingEnhancedCore.tables = {
         amount = 10,
       }
     }
+  },
+  {
+    nameID = "Mechanic Table",
+    displayName = getText("ContextMenu_LaboratoryTable"),
+    tooltipTitle = getText("UI_LaboratoryTable_Title"),
+    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    tooltipTexture = "core_workbenches_12",
+    icon = "",
+    size = 1,
+    sprites = {
+      north = {
+        "core_workbenches_13"
+      },
+      south = {
+        "core_workbenches_15"
+      },
+      west = {
+        "core_workbenches_12"
+      },
+      east = {
+        "core_workbenches_14"
+      }
+    },
+    requireTool = "Screwdriver",
+    recipe = {
+      {
+        type = "Base.Plank",
+        amount = 4,
+      },
+      {
+        type = "Base.Screws",
+        amount = 10,
+      },
+      {
+        type = "Base.ScrapMetal",
+        amount = 10,
+      }
+    },
+    completionSound = "BuildWoodenStructureLarge",
+    maxTime = 200,
+  },
+  {
+    nameID = "Forge Table",
+    displayName = getText("ContextMenu_LaboratoryTable"),
+    tooltipTitle = getText("UI_LaboratoryTable_Title"),
+    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    tooltipTexture = "core_workbenches_16",
+    icon = "",
+    size = 2,
+    sprites = {
+      north = {
+        "core_workbenches_18", "core_workbenches_19"
+      },
+      south = {
+        "core_workbenches_22", "core_workbenches_23"
+      },
+      west = {
+        "core_workbenches_16", "core_workbenches_17"
+      },
+      east = {
+        "core_workbenches_20", "core_workbenches_21"
+      }
+    },
+    requireTool = "Screwdriver",
+    recipe = {
+      {
+        type = "Base.Plank",
+        amount = 4,
+      },
+      {
+        type = "Base.Screws",
+        amount = 10,
+      },
+      {
+        type = "Base.ScrapMetal",
+        amount = 10,
+      }
+    },
+    completionSound = "BuildWoodenStructureLarge",
+    maxTime = 200,
+  },
+  {
+    nameID = "Armory table",
+    displayName = getText("ContextMenu_LaboratoryTable"),
+    tooltipTitle = getText("UI_LaboratoryTable_Title"),
+    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    tooltipTexture = "core_workbenches_24",
+    icon = "",
+    size = 2,
+    sprites = {
+      north = {
+        "core_workbenches_26", "core_workbenches_27"
+      },
+      south = {
+        "core_workbenches_30", "core_workbenches_31"
+      },
+      west = {
+        "core_workbenches_25", "core_workbenches_24"
+      },
+      east = {
+        "core_workbenches_29", "core_workbenches_28"
+      }
+    },
+    requireTool = "Screwdriver",
+    recipe = {
+      {
+        type = "Base.Plank",
+        amount = 4,
+      },
+      {
+        type = "Base.Screws",
+        amount = 10,
+      },
+      {
+        type = "Base.ScrapMetal",
+        amount = 10,
+      }
+    },
+    completionSound = "BuildWoodenStructureLarge",
+    maxTime = 200,
   },
 }
