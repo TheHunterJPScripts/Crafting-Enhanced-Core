@@ -21,10 +21,10 @@ CraftingEnhancedCore.tables = {
         "core_workbenches_6", "core_workbenches_7"
       },
       west = {
-        "core_workbenches_1", "core_workbenches_0"
+        "core_workbenches_0", "core_workbenches_1"
       },
       east = {
-        "core_workbenches_5", "core_workbenches_4"
+        "core_workbenches_4", "core_workbenches_5"
       }
     },
     requireTool = "Screwdriver",
@@ -47,6 +47,12 @@ CraftingEnhancedCore.tables = {
     container = {
       type = "crate",
       capacity = 5,
+      positions = {
+        west = 1,
+        east = 1,
+        north = 2,
+        south = 2,
+      }
     }
   },
   {
@@ -179,6 +185,12 @@ CraftingEnhancedCore.tables = {
     container = {
       type = "crate",
       capacity = 5,
+      positions = {
+        west = 1,
+        east = 1,
+        north = 2,
+        south = 2,
+      }
     }
   },
   {
@@ -197,10 +209,10 @@ CraftingEnhancedCore.tables = {
         "core_workbenches_30", "core_workbenches_31"
       },
       west = {
-        "core_workbenches_25", "core_workbenches_24"
+        "core_workbenches_24", "core_workbenches_25"
       },
       east = {
-        "core_workbenches_29", "core_workbenches_28"
+        "core_workbenches_28", "core_workbenches_29"
       }
     },
     requireTool = "Screwdriver",
@@ -223,6 +235,12 @@ CraftingEnhancedCore.tables = {
     container = {
       type = "crate",
       capacity = 5,
+      positions = {
+        west = 1,
+        east = 2,
+        north = 2,
+        south = 1,
+      }
     }
   },
 }

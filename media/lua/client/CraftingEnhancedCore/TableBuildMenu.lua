@@ -110,8 +110,11 @@ CraftingEnhancedCore.onBuildDoubleTiled = function(ignoreThisArgument, table, pl
 
   _table.player = player
   _table.name = table.nameID
-  _table.containerType = "crate";
 
+  if table.container then
+    _table.isContainer = true;
+    _table.modData["containerData"] = table.container
+  end
 
   for _, material in pairs(table.recipe) do
     _table.modData['need:' .. material.type] = material.amount
@@ -129,7 +132,7 @@ CraftingEnhancedCore.onBuildSingleTiled = function(ignoreThisArgument, table, pl
 
   _table.player = player
   _table.name = table.nameID
-  _table.containerType = "crate";
+  _table.isContainer = table.container ~= nil;
 
   _table:setEastSprite(table.sprites.east[1])
   _table:setSouthSprite(table.sprites.south[1])
