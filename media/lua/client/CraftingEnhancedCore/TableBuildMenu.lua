@@ -62,7 +62,11 @@ CraftingEnhancedCore.canBuildObject = function(_tooltip, player, table)
 
   if not CraftingEnhancedCore.getAvailableTools(inv, table.requireTool) then
     _tooltip.description = _tooltip.description .. ' <RGB:1,0,0>' ..
+<<<<<<< HEAD
         getText("ContextMenu_RequireTool") .. " " .. getItemNameFromFullType("Base." .. table.requireTool) .. ' <LINE>'
+=======
+        'Require tool' .. table.requireTool .. ' <LINE>'
+>>>>>>> f230470aa089196ef367840ca54385b0ee3dfd7d
   end
 
   for _, material in pairs(table.recipe) do
@@ -99,13 +103,18 @@ CraftingEnhancedCore.AddTooltip = function(option, player, table)
   local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, option, player);
 
   tooltip:setName(table.tooltipTitle);
+<<<<<<< HEAD
   tooltip.description = tooltip.description .. table.tooltipDescription .. "<LINE>";
+=======
+  tooltip.description = tooltip.description .. table.tooltipDescription;
+>>>>>>> f230470aa089196ef367840ca54385b0ee3dfd7d
   tooltip:setTexture(table.tooltipTexture);
 
   CraftingEnhancedCore.canBuildObject(tooltip, player, table)
 end
 
 CraftingEnhancedCore.onBuildDoubleTiled = function(ignoreThisArgument, table, player)
+<<<<<<< HEAD
   local _table = ISDoubleTileTable:new(table.nameID,
     table.sprites.west[1],
     table.sprites.west[2],
@@ -115,10 +124,15 @@ CraftingEnhancedCore.onBuildDoubleTiled = function(ignoreThisArgument, table, pl
     table.sprites.east[2],
     table.sprites.south[1],
     table.sprites.south[2])
+=======
+  local _table = ISDoubleTileFurniture:new(table.nameID, table.sprites.west[1], table.sprites.west[2],
+    table.sprites.south[1], table.sprites.south[2])
+>>>>>>> f230470aa089196ef367840ca54385b0ee3dfd7d
 
   _table.player = player
   _table.name = table.nameID
 
+<<<<<<< HEAD
   if table.container then
     _table.isContainer = true;
     _table.modData["containerData"] = table.container
@@ -145,6 +159,8 @@ CraftingEnhancedCore.onBuildSingleTiled = function(ignoreThisArgument, table, pl
   _table:setEastSprite(table.sprites.east[1])
   _table:setSouthSprite(table.sprites.south[1])
 
+=======
+>>>>>>> f230470aa089196ef367840ca54385b0ee3dfd7d
   for _, material in pairs(table.recipe) do
     _table.modData['need:' .. material.type] = material.amount
   end
