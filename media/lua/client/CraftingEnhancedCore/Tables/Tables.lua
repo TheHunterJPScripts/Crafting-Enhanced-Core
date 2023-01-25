@@ -8,8 +8,8 @@ CraftingEnhancedCore.tables = {
   {
     nameID = "Laboratory Table",
     displayName = getText("ContextMenu_LaboratoryTable"),
-    tooltipTitle = getText("UI_LaboratoryTable_Title"),
-    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    tooltipTitle = getText("ContextMenu_LaboratoryTable"),
+    tooltipDescription = getText("Tooltip_LaboratoryTable_Description"),
     tooltipTexture = "core_workbenches_1",
     icon = "",
     size = 2,
@@ -39,7 +39,7 @@ CraftingEnhancedCore.tables = {
       },
       {
         type = "Base.ScrapMetal",
-        amount = 10,
+        amount = 8,
       }
     },
     completionSound = "BuildWoodenStructureLarge",
@@ -48,18 +48,18 @@ CraftingEnhancedCore.tables = {
       type = "crate",
       capacity = 5,
       positions = {
-        west = 1,
-        east = 1,
-        north = 2,
-        south = 2,
+        west = 0,
+        east = 0,
+        north = 0,
+        south = 0,
       }
     }
   },
   {
     nameID = "Tailoring Table",
-    displayName = getText("ContextMenu_LaboratoryTable"),
-    tooltipTitle = getText("UI_LaboratoryTable_Title"),
-    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    displayName = getText("ContextMenu_TailoringTable"),
+    tooltipTitle = getText("ContextMenu_TailoringTable"),
+    tooltipDescription = getText("Tooltip_TailoringTable_Description"),
     tooltipTexture = "core_workbenches_8",
     icon = "",
     size = 1,
@@ -81,15 +81,19 @@ CraftingEnhancedCore.tables = {
     recipe = {
       {
         type = "Base.Plank",
+        amount = 2,
+      },
+      {
+        type = "Base.WoodenStick",
         amount = 4,
       },
       {
         type = "Base.Screws",
-        amount = 10,
+        amount = 6,
       },
       {
         type = "Base.ScrapMetal",
-        amount = 10,
+        amount = 5,
       }
     },
     completionSound = "BuildWoodenStructureLarge",
@@ -101,9 +105,9 @@ CraftingEnhancedCore.tables = {
   },
   {
     nameID = "Mechanic Table",
-    displayName = getText("ContextMenu_LaboratoryTable"),
-    tooltipTitle = getText("UI_LaboratoryTable_Title"),
-    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    displayName = getText("ContextMenu_MechanicTable"),
+    tooltipTitle = getText("ContextMenu_MechanicTable"),
+    tooltipDescription = getText("Tooltip_MechanicTable_Description"),
     tooltipTexture = "core_workbenches_12",
     icon = "",
     size = 1,
@@ -124,12 +128,16 @@ CraftingEnhancedCore.tables = {
     requireTool = "Screwdriver",
     recipe = {
       {
-        type = "Base.Plank",
-        amount = 4,
+        type = "Base.SheetMetal",
+        amount = 2,
+      },
+      {
+        type = "Base.SmallSheetMetal",
+        amount = 2,
       },
       {
         type = "Base.Screws",
-        amount = 10,
+        amount = 20,
       },
       {
         type = "Base.ScrapMetal",
@@ -140,14 +148,14 @@ CraftingEnhancedCore.tables = {
     maxTime = 200,
     container = {
       type = "crate",
-      capacity = 5,
+      capacity = 10,
     }
   },
   {
     nameID = "Forge Table",
-    displayName = getText("ContextMenu_LaboratoryTable"),
-    tooltipTitle = getText("UI_LaboratoryTable_Title"),
-    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    displayName = getText("ContextMenu_ForgeTable"),
+    tooltipTitle = getText("ContextMenu_ForgeTable"),
+    tooltipDescription = getText("Tooltip_ForgeTable_Description"),
     tooltipTexture = "core_workbenches_16",
     icon = "",
     size = 2,
@@ -165,39 +173,43 @@ CraftingEnhancedCore.tables = {
         "core_workbenches_20", "core_workbenches_21"
       }
     },
-    requireTool = "Screwdriver",
+    requireTool = "Hammer",
     recipe = {
       {
-        type = "Base.Plank",
-        amount = 4,
+        type = "Base.Stone",
+        amount = 8,
       },
       {
-        type = "Base.Screws",
-        amount = 10,
+        type = "Base.Log",
+        amount = 1,
       },
       {
         type = "Base.ScrapMetal",
         amount = 10,
+      },
+      {
+        type = "Base.UnusableMetal",
+        amount = 15,
       }
     },
     completionSound = "BuildWoodenStructureLarge",
     maxTime = 200,
     container = {
       type = "crate",
-      capacity = 5,
+      capacity = 4,
       positions = {
-        west = 1,
-        east = 1,
-        north = 2,
-        south = 2,
+        west = 2,
+        east = 2,
+        north = 1,
+        south = 1,
       }
     }
   },
   {
     nameID = "Armory table",
-    displayName = getText("ContextMenu_LaboratoryTable"),
-    tooltipTitle = getText("UI_LaboratoryTable_Title"),
-    tooltipDescription = getText("UI_LaboratoryTable_Description"),
+    displayName = getText("ContextMenu_ArmoryTable"),
+    tooltipTitle = getText("ContextMenu_ArmoryTable"),
+    tooltipDescription = getText("Tooltip_ArmoryTable_Description"),
     tooltipTexture = "core_workbenches_24",
     icon = "",
     size = 2,
@@ -227,7 +239,11 @@ CraftingEnhancedCore.tables = {
       },
       {
         type = "Base.ScrapMetal",
-        amount = 10,
+        amount = 30,
+      },
+      {
+        type = "Base.MetalBar",
+        amount = 5,
       }
     },
     completionSound = "BuildWoodenStructureLarge",
@@ -236,10 +252,10 @@ CraftingEnhancedCore.tables = {
       type = "crate",
       capacity = 5,
       positions = {
-        west = 1,
-        east = 2,
-        north = 2,
-        south = 1,
+        west = 0,
+        east = 0,
+        north = 0,
+        south = 0,
       }
     }
   },

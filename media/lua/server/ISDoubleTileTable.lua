@@ -1,8 +1,6 @@
 ISDoubleTileTable = ISDoubleTileFurniture:derive("ISDoubleTileTable");
 
--- TODO: Prevent building if it clip thought walls and stuff
 -- TODO: Secondary sprite not considered present when building over it (Game limitation looks like or maybe debug mode wierd stuff)
--- TODO: Check if out of debug mode the user moves to build the table.
 
 local directions = {
 	north = "North",
@@ -27,13 +25,13 @@ function ISDoubleTileTable:create(x, y, z, north, sprite)
 		containerPosition = self.modData["containerData"].positions.east
 	end
 
-	self.isContainer = containerPosition == 1
+	self.isContainer = containerPosition == 1 or containerPosition == 0
 	local cell = getWorld():getCell();
 	self.sq = cell:getGridSquare(x, y, z);
 	self:setInfo(self.sq, north, sprite, self);
 
 
-	self.isContainer = containerPosition == 2
+	self.isContainer = containerPosition == 2 or containerPosition == 0
 	local secondarySprite = self:getSpriteSecondary();
 	local x2, y2, z2 = self:getGridSquareSecondary(x, y, z)
 

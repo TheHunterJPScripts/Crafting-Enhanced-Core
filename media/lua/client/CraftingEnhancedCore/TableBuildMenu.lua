@@ -1,5 +1,13 @@
 CraftingEnhancedCore = {}
 
+-- TODO: Properly document everythig
+-- TODO: Properly setup the git enviroment
+-- TODO: Fix spanish translation , file format
+-- TODO: Add submenu outside the carpentry menu (After carpentry if posible)
+-- TODO: Prepare the workshop overlook
+-- TODO: Create a custoom poster.png
+-- TODO: Fix error when right click showing on console
+
 CraftingEnhancedCore.NAME = 'Crafting Enhanced Core'
 CraftingEnhancedCore.AUTHOR = 'TheHunterJP'
 CraftingEnhancedCore.VERSION = '0.1'
@@ -54,7 +62,7 @@ CraftingEnhancedCore.canBuildObject = function(_tooltip, player, table)
 
   if not CraftingEnhancedCore.getAvailableTools(inv, table.requireTool) then
     _tooltip.description = _tooltip.description .. ' <RGB:1,0,0>' ..
-        'Require tool' .. table.requireTool .. ' <LINE>'
+        getText("ContextMenu_RequireTool") .. " " .. getItemNameFromFullType("Base." .. table.requireTool) .. ' <LINE>'
   end
 
   for _, material in pairs(table.recipe) do
@@ -91,7 +99,7 @@ CraftingEnhancedCore.AddTooltip = function(option, player, table)
   local tooltip = ISBuildMenu.canBuild(0, 0, 0, 0, 0, 0, option, player);
 
   tooltip:setName(table.tooltipTitle);
-  tooltip.description = tooltip.description .. table.tooltipDescription;
+  tooltip.description = tooltip.description .. table.tooltipDescription .. "<LINE>";
   tooltip:setTexture(table.tooltipTexture);
 
   CraftingEnhancedCore.canBuildObject(tooltip, player, table)
