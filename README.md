@@ -52,4 +52,4 @@ module Example_Recipes
 ```
 
 #### External link
-* [Steam WorkShop](https://steamcommunity.com/sharedfiles/filedetails/?id=515555911)
+* [Steam WorkShop](https://steamcommunity.com/sharedfiles/filedetails/?id=2923979345)
