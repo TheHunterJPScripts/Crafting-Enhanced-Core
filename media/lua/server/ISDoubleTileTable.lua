@@ -1,7 +1,5 @@
 ISDoubleTileTable = ISDoubleTileFurniture:derive("ISDoubleTileTable");
 
--- TODO: Secondary sprite not considered present when building over it (Game limitation looks like or maybe debug mode wierd stuff)
-
 local directions = {
 	north = "North",
 	south = "South",
@@ -64,6 +62,7 @@ function ISDoubleTileTable:new(name, sprite1, sprite2, northSprite1, northSprite
 	o.name = name;
 	o.buildLow = true;
 	o.canBeAlwaysPlaced = true;
+
 	return o;
 end
 

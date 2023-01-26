@@ -1,6 +1,7 @@
-name=Crafting enhanced core
+name=Crafting Enhanced Core
 poster=poster.png
 id=craftingEnhancedCore
-description=Project Zomboid more builds Mod. <BR> author: ProjectSky <BR> Date: September 10, 2015 <BR> Contact: sky.orc.mm@gmail.com
-tiledef=core_crafting 2750
+description=Project Zomboid Mod that add new tables to use for crafting. <BR> author: TheHunterJP
+
+tiledef=core_crafting 3573
 pack=core_crafting
