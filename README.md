@@ -1,11 +1,12 @@
-#### Project Zomboid MoreBuilds Mod
+#### Project Zomboid Mod: Crafting Enhanced Mod
 
-* Project: ProjectSky
-* Date: September 10, 2015
+* Project: Crafting Enhanced Mod
+* Author: ThatHunterJP
+* Date: January 26, 2023
 
 #### Description
-* This mod adds more builds containers, furniture, decorations and more to the game
-* If you like this mod, don't forget to star
+* This mod add a couple of new crafting table to use as a core component on crafting enhanced mods.
+
 
 
 #### External link

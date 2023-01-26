@@ -1,9 +1,9 @@
 ContextMenu_ES = {
-  ContextMenu_Tables = "Mesas de creaci√≥n mejoradas",
+  ContextMenu_Tables = "Mesas de creaciÛn mejoradas",
   ContextMenu_LaboratoryTable = "Mesa de laboratorio",
-  ContextMenu_TailoringTable = "Mesa de sastrer√≠a",
-  ContextMenu_MechanicTable = "Mesa de mec√°nico",
+  ContextMenu_TailoringTable = "Mesa de sastrerÌa",
+  ContextMenu_MechanicTable = "Mesa de mec·nico",
   ContextMenu_ForgeTable = "Forja",
-  ContextMenu_ArmoryTable = "Armer√≠a",
+  ContextMenu_ArmoryTable = "ArmerÌa",
   ContextMenu_RequireTool = "Se necesita la herramienta",
 }
