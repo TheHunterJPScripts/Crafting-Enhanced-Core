@@ -13,6 +13,7 @@ CraftingEnhancedCore.tables["forge"] =
     tooltipTexture = "core_workbenches_16",
     icon = "",
     size = 2,
+    anim = "Build",
     sprites = {
         north = {
             "core_workbenches_18", "core_workbenches_19"

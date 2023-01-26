@@ -5,13 +5,15 @@ end
 CraftingEnhancedCore = getModInstance()
 
 CraftingEnhancedCore.tables["armoryTable"] = {
-    nameID = "Armory table",
+    nameID = "Armory Table",
     displayName = getText("ContextMenu_ArmoryTable"),
     tooltipTitle = getText("ContextMenu_ArmoryTable"),
     tooltipDescription = getText("Tooltip_ArmoryTable_Description"),
     tooltipTexture = "core_workbenches_24",
     icon = "",
     size = 2,
+    anim = "VehicleTrailer",
+    craftingSound = "RepairWithWrench",
     sprites = {
         north = {
             "core_workbenches_26", "core_workbenches_27"

@@ -12,6 +12,8 @@ CraftingEnhancedCore.tables["mechanicTable"] = {
     tooltipTexture = "core_workbenches_12",
     icon = "",
     size = 1,
+    anim = "VehicleTrailer",
+    craftingSound = "RepairWithWrench",
     sprites = {
         north = {
             "core_workbenches_13"

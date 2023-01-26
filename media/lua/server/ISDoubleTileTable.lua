@@ -62,6 +62,7 @@ function ISDoubleTileTable:new(name, sprite1, sprite2, northSprite1, northSprite
 	o.name = name;
 	o.buildLow = true;
 	o.canBeAlwaysPlaced = true;
+
 	return o;
 end
 

@@ -92,6 +92,16 @@ CraftingEnhancedCore.onBuildDoubleTiled = function(ignoreThisArgument, table, pl
   _table.player = player
   _table.name = table.nameID
 
+  if table.anim then
+    _table.actionAnim = table.anim
+  end
+
+
+  if table.craftingSound then
+    _table.craftingBank = table.craftingSound
+    _table.noNeedHammer = true;
+  end
+
   if table.container then
     _table.isContainer = true;
     _table.modData["containerData"] = table.container
@@ -114,9 +124,19 @@ CraftingEnhancedCore.onBuildSingleTiled = function(ignoreThisArgument, table, pl
   _table.player = player
   _table.name = table.nameID
   _table.isContainer = table.container ~= nil;
+  _table.craftingBank = "BlowTorch"
 
   _table:setEastSprite(table.sprites.east[1])
   _table:setSouthSprite(table.sprites.south[1])
+
+  if table.anim then
+    _table.actionAnim = table.anim
+  end
+
+  if table.craftingSound then
+    _table.craftingBank = table.craftingSound
+    _table.noNeedHammer = true;
+  end
 
   for _, material in pairs(table.recipe) do
     _table.modData['need:' .. material.type] = material.amount

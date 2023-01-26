@@ -1,8 +1,6 @@
 CraftingEnhancedCore = {}
 
--- TODO: Properly document everything
 -- TODO: Prepare the workshop overlook
--- TODO: Create a custoom poster.png
 
 CraftingEnhancedCore.NAME = 'Crafting Enhanced Core'
 CraftingEnhancedCore.AUTHOR = 'TheHunterJP'
