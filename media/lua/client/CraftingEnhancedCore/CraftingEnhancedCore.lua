@@ -1,7 +1,5 @@
 CraftingEnhancedCore = {}
 
--- TODO: Prepare the workshop overlook
-
 CraftingEnhancedCore.NAME = 'Crafting Enhanced Core'
 CraftingEnhancedCore.AUTHOR = 'TheHunterJP'
 CraftingEnhancedCore.VERSION = '1.0.0'

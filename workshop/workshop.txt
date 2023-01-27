@@ -1,0 +1,22 @@
+version=1
+id=2923979345
+title=Crafting Enhanced Core
+description=[h1] Crafting Enhanced Core [/h1]
+
+[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
+
+Project Zomboid Mod that add new tables to use for crafting. By itself this mod only add the tiles and the hability to build them in the world. 
+Just to clarify, it [b]does not add any new recipe[/b]. Later down the line i will make an other mod that adds some custom recipes but i first want to make a mining mod.
+
+[url=http://theindiestone.com/forums/index.php/topic/2530-mod-permissions/?p=36478] [img]https://i.imgur.com/JzzJD3q.png[/img] [/url]
+
+In case you decide to use this mod to create the recipes, make sure to take a look to the documentation on my github, and feel free to message me to link you recipes on this mod description.
+
+[url=http://github.com/TheHunterJPScripts/Crafting-Enhanced/][img]https://imgur.com/Dc3BWQa.png[/img][/url]
+
+Workshop ID: 2923979345
+Mod ID: craftingEnhancedCore
+
+tiledef: 3573
+tags=Build 41;Misc;Textures
+visibility=public
