@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/language-lua-blue)
 ![](https://img.shields.io/badge/version-1.0.0-green)
 * Project: Crafting Enhanced Mod
-* Author: ThatHunterJP
+* Author: TheHunterJP
 * Date: January 26, 2023
 
 #### Description
