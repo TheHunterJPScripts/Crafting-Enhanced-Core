@@ -34,7 +34,6 @@ CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, wo
 
   if subMenu then
     for _, value in pairs(CraftingEnhancedCore.tables) do
-      print(SandboxCheck(_))
       if SandboxCheck(_) then
         CraftingEnhancedCore.TableMenuBuilder(subMenu, player, value)
       end
