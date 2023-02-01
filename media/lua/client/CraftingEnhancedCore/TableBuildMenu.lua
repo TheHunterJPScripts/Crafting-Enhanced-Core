@@ -4,6 +4,16 @@ local function predicateNotBroken(item)
   return not item:isBroken()
 end
 
+local function SandboxCheck(name)
+  for x,y in pairs(SandboxVars.craftingEnhancedCore) do
+    if x == name then
+      return y
+    end
+  end
+
+  return false
+end
+
 CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, worldobjects, test)
   if getCore():getGameMode() == 'LastStand' then
     return
@@ -24,7 +34,10 @@ CraftingEnhancedCore.OnFillWorldObjectContextMenu = function(player, context, wo
 
   if subMenu then
     for _, value in pairs(CraftingEnhancedCore.tables) do
-      CraftingEnhancedCore.TableMenuBuilder(subMenu, player, value)
+      print(SandboxCheck(_))
+      if SandboxCheck(_) then
+        CraftingEnhancedCore.TableMenuBuilder(subMenu, player, value)
+      end
     end
   end
 end

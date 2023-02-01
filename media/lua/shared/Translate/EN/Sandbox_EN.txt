@@ -1,0 +1,18 @@
+Sandbox_EN = {
+	Sandbox_craftingEnhancedCore = "Crafting Enhanced Core",
+
+	Sandbox_craftingEnhancedCore_laboratoryTable = "Laboratory Table",
+    Sandbox_craftingEnhancedCore_laboratoryTable_Tooltip = "Enable/Disable the ability to build this table."
+
+    Sandbox_craftingEnhancedCore_forge = "Forge",
+    Sandbox_craftingEnhancedCore_forge_Tooltip = "Enable/Disable the ability to build the Forge."
+
+    Sandbox_craftingEnhancedCore_armoryTable = "Armory Table",
+    Sandbox_craftingEnhancedCore_armoryTable_Tooltip = "Enable/Disable the ability to build this table."
+
+    Sandbox_craftingEnhancedCore_mechanicTable = "Mechanic Table",
+    Sandbox_craftingEnhancedCore_mechanicTable_Tooltip = "Enable/Disable the ability to build this table."
+
+    Sandbox_craftingEnhancedCore_tailoringTable = "Tailoring Table",
+    Sandbox_craftingEnhancedCore_tailoringTable_Tooltip = "Enable/Disable the ability to build this table."
+}

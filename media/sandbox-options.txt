@@ -1,0 +1,42 @@
+VERSION = 1,
+
+option craftingEnhancedCore.laboratoryTable
+{
+	type = boolean, 
+    default = true,
+
+	page = craftingEnhancedCore, 
+    translation = craftingEnhancedCore_laboratoryTable,
+}
+option craftingEnhancedCore.forge
+{
+	type = boolean, 
+    default = true,
+
+	page = craftingEnhancedCore, 
+    translation = craftingEnhancedCore_forge,
+}
+option craftingEnhancedCore.armoryTable
+{
+	type = boolean, 
+    default = true,
+
+	page = craftingEnhancedCore, 
+    translation = craftingEnhancedCore_armoryTable,
+}
+option craftingEnhancedCore.mechanicTable
+{
+	type = boolean, 
+    default = true,
+
+	page = craftingEnhancedCore, 
+    translation = craftingEnhancedCore_mechanicTable,
+}
+option craftingEnhancedCore.tailoringTable
+{
+	type = boolean, 
+    default = true,
+
+	page = craftingEnhancedCore, 
+    translation = craftingEnhancedCore_tailoringTable,
+}
