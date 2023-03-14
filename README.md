@@ -1,10 +1,12 @@
 ## Project Zomboid Mod: Crafting Enhanced Mod
 ![](https://img.shields.io/badge/ProjectZomboid-41.78-orange)
 ![](https://img.shields.io/badge/language-lua-blue)
-![](https://img.shields.io/badge/version-1.0.0-green)
+![](https://img.shields.io/badge/version-1.0.1-green)
 * Project: Crafting Enhanced Mod
 * Author: TheHunterJP
 * Date: January 26, 2023
+
+* Portuguese and Brazilian translation: ?XIM?
 
 #### Description
 * This mod add a couple of new crafting table to use as a core component on crafting enhanced mods.
