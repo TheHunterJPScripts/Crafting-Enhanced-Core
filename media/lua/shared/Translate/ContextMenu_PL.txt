@@ -1,0 +1,9 @@
+ContextMenu_PL = {
+  ContextMenu_Tables = "Tworzenie Rzemieślniczych Stołów",
+  ContextMenu_LaboratoryTable = "Stół Laboratoryjny",
+  ContextMenu_TailoringTable = "Stół Krawiecki",
+  ContextMenu_MechanicTable = "Stół Mechanika",
+  ContextMenu_ForgeTable = "Kuźnia",
+  ContextMenu_ArmoryTable = "Stół Wojskowy",
+  ContextMenu_RequireTool = "Wymagane narzędzia",
+}
