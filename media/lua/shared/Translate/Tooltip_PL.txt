@@ -1,0 +1,7 @@
+Tooltip_PL = {
+  Tooltip_LaboratoryTable_Description = "Stół rzemieślniczy, przeznaczony do chemii i wytworzenia artykułów pierwszej pomocy.",
+  Tooltip_TailoringTable_Description = "Stół rzemieślniczy, przeznaczony do tworzenia przedmiotów krawieckich.",
+  Tooltip_MechanicTable_Description = "Stół rzemieślniczy, przeznaczony do wytwarzania przedmiotów związanych z mechaniką i samochodami.",
+  Tooltip_ForgeTable_Description = "Stół rzemieślniczy, przeznaczony do wykuwania przedmiotów związanych ze spawaniem.",
+  Tooltip_ArmoryTable_Description = "Stół rzemieślniczy, przeznaczony do tworzenia zbroi, broni i przedmiotów inżynieryjnych.",
+}
